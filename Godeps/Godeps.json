@@ -1,0 +1,21 @@
+{
+	"ImportPath": "github.com/danielwelch/mednotes",
+	"GoVersion": "go1.5.3",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "215affda49addc4c8ef7e2534915df2c8c35c6cd"
+		},
+		{
+			"ImportPath": "github.com/gorilla/handlers",
+			"Rev": "b3aff83722cb2ae031a70cae984650e3a16cd20e"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "f15e0c49460fd49eebe2bcc8486b05d1bef68d3a"
+		}
+	]
+}
