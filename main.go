@@ -12,6 +12,6 @@ func main() {
 	r := handlers.LoggingHandler(os.Stdout, Router())
 
 	log.Println("Listening on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), r))
 
 }
