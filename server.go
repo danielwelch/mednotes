@@ -7,7 +7,7 @@ import (
 	"net/http"
 	// "path/filepath"
 
-	"github.com/gorilla/mux"
+	"github.com/danielwelch/mednotes/Godeps/_workspace/src/github.com/gorilla/mux"
 )
 
 func Router() *mux.Router {
@@ -23,7 +23,7 @@ func Router() *mux.Router {
 		r.PathPrefix(dir).Handler(
 			http.StripPrefix(
 				dir,
-				http.FileServer(http.Dir("."+dir)),
+				http.FileServer(http.Dir("./notebooks/"+dir)),
 			),
 		)
 	}
@@ -37,7 +37,7 @@ func Router() *mux.Router {
 // If pre == true, name of dir will be preceeded with "/"
 func DirNames(pre bool) ([]string, error) {
 	var dirs []string
-	files, err := ioutil.ReadDir("./")
+	files, err := ioutil.ReadDir("./notebooks/")
 	if err != nil {
 		return nil, err
 	}

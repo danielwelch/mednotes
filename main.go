@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gorilla/handlers"
+	"github.com/danielwelch/mednotes/Godeps/_workspace/src/github.com/gorilla/handlers"
 	"log"
 	"net/http"
 	"os"

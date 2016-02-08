@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre {margin: 0;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+  <div id="nav"><div>Previous: <a href='Sickle Cell Disease.html'>Sickle Cell Disease</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>Hemolytic Anemias</h2>
+  </div>
+  <div id="contentarea"><div class="cell markdown-cell"><h1 id="general-principles-of-hemolytic-anemia">General Principles of Hemolytic Anemia</h1>
+<p>Hemolysis is the accelerated rate of destruction of RBCs (less than 120 days). Can be compensated by the bone marrow if mild, causing an elevated reticulocyte count.</p>
+<p><strong>Hemolytic anemia</strong> is an accelerated rate of RBC destruction that the bone marrow cannot fully compensate for by increased RBC synthesis.</p>
+<h3 id="clinical-presentation-of-hemolytic-anemias">Clinical Presentation of Hemolytic Anemias</h3>
+<ul>
+<li>Jaundice</li><li>Scleral Icterus</li><li>Gallstones - increased billirubin<ul>
+<li>Many patients require cholecystectomy</li></ul>
+</li><li>Splenomegaly =&gt; LUQ pain, early satiety (spleen pressing on stomach)</li><li>Leg ulcers</li><li>Acute crisis (aplastic, megaloblastic)<ul>
+<li>ex: Parvovirus causes temporary bone marrow suppression, which (due to short lifespan of RBCs) will cause severe acute anemia<ul>
+<li>May see <em>giant pronormoblast</em></li></ul>
+</li><li>Retic count will suddenly drop from increased to almost 0</li></ul>
+</li><li>Symptoms of tisue hypoxia, CV compensation<ul>
+<li>fatigue, weakness, SOB, tachycardia, palpitations</li></ul>
+</li></ul>
+<h3 id="labratory-results">Labratory Results</h3>
+<p>(insert primary and secondary tests with result)</p>
+<p>Blood smear:<br>(insert results with disease associations)</p>
+<hr>
+<h1 id="extravascular-vs-intravascular-hemolysis">Extravascular vs. Intravascular Hemolysis</h1>
+<h3 id="extravascular">Extravascular</h3>
+<p>More common (90% of cases ). Inappropriate removal of RBCs by tissue macrophages.<br>Causes release of unconjugated bilirubin, iron, and protein.</p>
+<h3 id="intravascular">Intravascular</h3>
+<p>10% of all cases. RBCs are destroyed in the general circulation, causing release of:</p>
+<ul>
+<li>Billirubin</li><li>Hemoglobin =&gt; hemoglobinuria</li><li>Hemosiderinuria</li><li>Low haptoglobin</li><li>Higher LDH than extravascular</li></ul>
+<hr>
+<h1 id="mechanisms-of-hemolysis-intrinsic-vs-extrinsic">Mechanisms of Hemolysis - Intrinsic vs. Extrinsic</h1>
+<h2 id="intrinsic">Intrinsic</h2>
+<p>Reason for hemolysis is intrinsic to the RBC itself</p>
+<h3 id="membrane-disorders">Membrane Disorders</h3>
+<p>Ex: <strong>Hereditary Spherocytosis</strong></p>
+<ul>
+<li>Most common hereditary hemolytic anemia in Caucausians</li><li>Most commonly AD inheritance</li><li>Caused by mutation in membrane proteins (spectrin, ankyrin, band 3) =&gt; loss of biconcave disk shape</li><li><strong>Spherocytes, increased reticulocytes, nucleated RBCs</strong><ul>
+<li>Causes increased MCV</li><li>Nucleated RBCs are only visible in periphery when bone marrow is replacing a lot of blood</li></ul>
+</li><li>Diagnosis:<ul>
+<li><strong>Osmotic Fragility test</strong> - measures release of Hb from damaged RBCs due to exposure to hypotonic saline solution. Normal RBCs are more tolerant to osmotic expansion than spherocytes.</li></ul>
+</li><li>Treatment<ul>
+<li>Splenectomy is very effective</li></ul>
+</li></ul>
+<h3 id="metabolic-disorders">Metabolic Disorders</h3>
+<p>Ex: <strong>G-6PD Deficiency</strong></p>
+<ul>
+<li>Most common metabolic disorder of RBCs, especially in African American males<ul>
+<li>Mediterranean variant also exists</li><li>G-6PD provides survival advantage to malaria</li></ul>
+</li><li>Deficiency in G-6PD =&gt; reduced detoxifying of H2O2 =&gt; <strong>failure of RBC to withstand oxidative stress</strong></li><li><strong>X-linked inheritance</strong> (more common in men)</li><li>Typical presentation: acute hemolytic crisis after exposure to oxidant stressors or drugs<ul>
+<li>Common drugs: <strong>Sulfa, antimalarials, fava bean</strong></li></ul>
+</li><li><strong>Bite cells</strong> on peripheral smear, Heinz body staining +</li></ul>
+<h3 id="hemoglobin-variants">Hemoglobin Variants</h3>
+<p>See Sickle cell, Thalassemias</p>
+<h2 id="extrinsic">Extrinsic</h2>
+<p>Reason for hemolysis is not intrinsic to the RBC itself</p>
+<h3 id="autoimmune-mediated">Autoimmune mediated</h3>
+<p>Two Kinds:</p>
+<ol>
+<li>Warm - IgG mediated</li><li><strong>C</strong>old Agglutinin - IgM mediated (binds <strong>c</strong>omplement)</li></ol>
+<p>Distinguished by <strong>Coombs Test</strong>:</p>
+<ul>
+<li>Coombs Reagent = mix of Anti-IgG and Anti-C3 protein (for IgM)</li><li>Coombs Reagent is mixed with patients blood to test for agglutination with IgG and C3</li></ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Coombs Test</th>
+<th>Smear</th>
+<th>Clinical Features</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Warm</td>
+<td>+ for IgG</td>
+<td>Spherocytes, nucleated RBCs, increased reticulocytes</td>
+<td>Associated with autoimmune and lymphoproliferative disorders, destruction of RBCs primarily in spleen</td>
+<td>Steroids (first line), splenectomy, rituximab</td>
+</tr>
+<tr>
+<td>Cold</td>
+<td>+ for C3</td>
+<td>Agglutination of RBCs</td>
+<td>Older age group, intravascular RBC destruction, Raynaud's / Acrocyanosis, Post-infectious or lymphoma</td>
+<td>Rituximab, avoid cold temps., plasmapharesis for acute emergency</td>
+</tr>
+</tbody>
+</table>
+</div><div class="cell text-cell"><img src="resources/A571DF8FC3D11F741B52129EC8AEAC09.png" alt="Screen Shot 2016-02-04 at 4.45.47 PM.png"></div><div class="cell markdown-cell"><h3 id="red-cell-fragmentation">Red cell fragmentation</h3>
+<p>Ex: <strong>Microangiopathic Anemias</strong></p>
+<ul>
+<li>High shear stress leads to damage of RBCs</li><li>Causes:<ul>
+<li>Macrovascular disease - heart valve replacement, trauma</li><li>Microvascular disease - DIC, thrombotic thrombocytopenic purpura</li></ul>
+</li><li><strong>Schistocytes</strong> noted on peripheral blood smear</li></ul>
+</div><div class="cell text-cell"><img src="resources/3D7EE836F0BDCA865E5CC8A2A4F6DF8B.png" alt="Screen Shot 2016-02-04 at 4.49.56 PM.png"><div>Schistocytes in microangiopathic hemolytic anemia</div></div><div class="cell markdown-cell"><h3 id="infection">Infection</h3>
+</div></div>
+  <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 37) window.location.href = 'Sickle Cell Disease.html';
+}</script>
+</body>
+</html>

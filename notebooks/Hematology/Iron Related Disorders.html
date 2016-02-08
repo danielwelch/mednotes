@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre {margin: 0;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+  <div id="nav"><div>Next: <a href='Thalasemmia.html'>Thalasemmia</a>, Previous: <a href='Anemia and Erythrocytosis.html'>Anemia and Erythrocytosis</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>Iron Related Disorders</h2>
+  </div>
+  <div id="contentarea"><div class="cell text-cell"><img src="resources/4F8C9793D5E1CBF21D07C2721A529D84.png" alt="Screen Shot 2016-02-03 at 9.00.30 AM.png"></div><div class="cell markdown-cell"><h2 id="important-proteins">Important Proteins</h2>
+<ul>
+<li>Transferrin - transports iron in bloodstream</li><li>Transferrin receptors - takes up iron bound to transferrin into cells (RBC, hepatocytes, macrophages)</li><li>Ferritin - iron storage in cells</li><li>Ferroportin - transmembrane protein that moves iron out of cells</li><li>Hepcidin - negative regulator of available iron, down-regulates iron release from intestine, splenic macrophages, and liver stores</li><li>HFE - regulatory protein that, when mutated, may result in hereditary hemochormatosis</li></ul>
+<h2 id="iron-metabolism">Iron Metabolism</h2>
+<p>Iron absorption is tightly regulated by hepcidin. Iron is stored in the liver. Excess intake can lead to iron overload, since there's no specific mechanism for secreting iron. </p>
+<hr>
+<h1 id="iron-deficiency">Iron Deficiency</h1>
+<p><strong>Most common cause of anemia worldwide.</strong> Must discover underlying cause of iron deficiency (GI bleed (most common), fibroids, malabsorption, poor dietary intake).<br>Clinical Findings:</p>
+<ul>
+<li>Pallor of skin and conjunctivae</li><li>Pica (desire to eat ice)</li><li><a href="https://en.wikipedia.org/wiki/Angular_cheilitis">Angular cheilosis</a></li><li><a href="https://en.wikipedia.org/wiki/Glossitis#Atrophic_glossitis">Atrophic Glossitis</a></li></ul>
+<p>Lab Results (insert lab results table here)</p>
+<ul>
+<li>Microcytic and hypochromic RBCs on blood smear</li></ul>
+<p>Treatment:</p>
+<ul>
+<li>Treat the underlying cause/disease!</li><li>Replace iron<ul>
+<li>GI side effects, black stools</li></ul>
+</li><li>IV iron<ul>
+<li>Quicker response, but risk of severe allergic reaction.</li><li>Only used when oral iron not effective (unable to absorb, intolerant of oral), or fast response needed</li></ul>
+</li></ul>
+<hr>
+<h1 id="anemia-of-chronic-disease-acd-">Anemia of Chronic Disease (ACD)</h1>
+<p>ACD is seen in infection, inflammatory disorders, and malignancy, NOT in chronic, non-inflammatory medical illness.</p>
+<p>Pathogenesis:</p>
+<ul>
+<li>Sequestration of iron despite adequate iron stores; unable to mobilize iron into RBCs. EPO can drive RBC formation to overcome this.</li><li>Cytokine mediated - IL-6 increases hepcidin production in hepatocytes=&gt; negative regulator of iron mobilization</li><li>Increased hepcidin decreases plasma iron levels</li></ul>
+<p>Lab Results: (insert table here)</p>
+<p>Special Case: <strong>Anemia of Chronic Kidney Disease</strong></p>
+<ul>
+<li>Decreased EPO synthesis in failing kidney</li><li>Treated with EPO supplementation, iron supplementation often needed as well</li><li>Improves or resolves w/ transplant</li></ul>
+<hr>
+<h1 id="iron-overload-hemochromatosis">Iron Overload - Hemochromatosis</h1>
+<p>Too much iron =&gt; generation of ROS =&gt; tissue damage in multiple organs</p>
+<h3 id="primary-hereditary-hemochromatosis">Primary (Hereditary) Hemochromatosis</h3>
+<p>Increased intestinal iron absorption =&gt; iron deposition in heart and liver<br><strong>HFE-related Hemochromatosis</strong>:</p>
+<ul>
+<li>Most common form of hereditary hemochromatosis</li><li>Mutation in HFE gene decreases hepcidin =&gt; increased iron absorption</li><li>Mutations = C282Y, H63D<ul>
+<li>10% of U.S. caucasians are heterozygous - usually unaffected</li><li>0.5% are homozygous</li></ul>
+</li><li>Vast majority of those with clinical symptoms or organ damage are <strong>C282Y</strong> homozygotes.</li></ul>
+<h3 id="secondary-hemochromatosis">Secondary Hemochromatosis</h3>
+<p>Can be caused by chronic transfusion of RBCs, thalassemia, sideroblastic anemia, chronic liver disease</p>
+<p>Lab Results (insert table here)</p>
+<ul>
+<li>Prussian blue stain of liver biopsy reveals iron deposition</li></ul>
+<p>Clinical Manifestations:</p>
+<ul>
+<li>Cirrhosis, risk of hepatoma</li><li>Cardiac failure</li><li>Endocrine abnormalities (DM, gonadal changes)</li><li>Skin pigmentation</li><li>Arthritis</li></ul>
+<p>Treatment:</p>
+<ul>
+<li>Primary treated with phlebotomy</li><li>Secondary treated with iron chelation therapy (poorly tolerated)<ul>
+<li>Can't treat with phlebotomy, because usually anemic in the first place (or some other reason for receiving chronic tranfusions)</li></ul>
+</li></ul>
+</div></div>
+  <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 39) window.location.href = 'Thalasemmia.html';
+if (e.keyCode === 37) window.location.href = 'Anemia and Erythrocytosis.html';
+}</script>
+</body>
+</html>
