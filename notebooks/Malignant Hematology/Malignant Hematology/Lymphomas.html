@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre {margin: 0;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+  <div id="nav"><div>Previous: <a href='Leukemias.html'>Leukemias</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>Lymphomas</h2>
+  </div>
+  <div id="contentarea"><div class="cell markdown-cell"><h1 id="hodgkin-lymphoma">Hodgkin Lymphoma</h1>
+<p>Neoplastic proliferation of <strong>Reed-Sternberg Cells</strong></p>
+<h3 id="epidemiology">Epidemiology</h3>
+<ul>
+<li>Bimodal age distribution</li><li>Strongly associated with EBV, especially Mixed cell and Lymphocyte Depleted subtypes</li><li>More common in younger patients than Non-Hodgkin</li></ul>
+<h3 id="staging">Staging</h3>
+<ol>
+<li>Only <strong>one lymph node</strong></li><li>More than one lymph node on <strong>same side of diaphragm</strong></li><li>More than one lymph node plus involvement on <strong>both sides of diaphragm</strong></li><li>Involvement of a <strong>non-lymphatic organ</strong></li></ol>
+<h3 id="clinical-features">Clinical Features</h3>
+<ul>
+<li>Enlarged but painless node</li><li>Cytokines secreted by <strong>Reed-Sternberg cells</strong> can result in <strong>"B symptoms"</strong>:<ul>
+<li>B symptoms = <strong>fever, chills, weight loss, night sweats</strong></li><li>In particular: Fever &gt; 101 w/o explanation, &gt;10% weight loss in last 6 months w/o explanation</li><li><strong>B symptoms confer worse prognosis</strong></li></ul>
+</li><li>Other possible symptoms include pruritis, alcohol intolerance</li><li>Spreads to <strong>contiguous</strong> nodes, commonly in <strong>lower neck and supraclavicula</strong>r nodes</li></ul>
+<h3 id="pathology-reed-sternberg-cells">Pathology - Reed-Sternberg Cells</h3>
+<ul>
+<li>Large B cells w/ multilobed nuclei and prominent nucleoli =&gt; "owl-eyed nuclei"</li><li>CD15+ and CD30+</li><li>CD45-</li></ul>
+<h3 id="subtypes">Subtypes</h3>
+<ol>
+<li><strong>Nodular Sclerosis</strong>: <strong>most common</strong>, RS cells present in <strong>lacunae</strong>, visible sclerosis of lymph node on biopsy</li><li><strong>Lymphocyte-Rich</strong>: <strong>Best prognosis</strong></li><li><strong>Mixed Cell</strong>: Associated with <strong>abundant eosinophils</strong> due to IL-5 production</li><li><strong>Lymphocyte-Depleted</strong>: <strong>Worst prognosis</strong>, associated with <strong>HIV and elderly</strong></li></ol>
+<h3 id="treatment">Treatment</h3>
+<p>ABVD - adriomycin, bleomycin, vinblastine, dacarbazine</p>
+<ul>
+<li>Early stage =&gt; 2-4 rounds + radiation</li><li>Late stage =&gt; 6-8 rounds</li></ul>
+<p>Complications: <strong>pulmonary fibrosis (bleomycin), heart disease (adriamycin)</strong>, thyroid dysfunction (radiation)</p>
+<hr>
+<h1 id="non-hodgkin-lymphoma">Non-Hodgkin Lymphoma</h1>
+<p><strong>Proliferation of lymphoid cells</strong> that forms a lymph node or extranodal mass.<br>Can be divided into <strong>T cell neoplasms and B cell neoplasms</strong>.</p>
+<ul>
+<li>All B cell subtypes are translocations involving <strong>chr 14</strong> because that's where the <strong>Ig heavy chain</strong> gene is located </li></ul>
+<table>
+<thead>
+<tr>
+<th>B Cell Size</th>
+<th>Subtypes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small</td>
+<td>Follicular, Mantle Cell, Marginal Zone, Small lymphocytic lymphoma (i.e. CLL)</td>
+</tr>
+<tr>
+<td>Intermediate</td>
+<td>Burkitt</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Diffuse Large B Cell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="follicular-lymphoma">Follicular Lymphoma</h3>
+<ul>
+<li>Proliferation of small CD20+ B cells that form follicle-like nodules =&gt; painless lymphadenopathy<ul>
+<li>Distinguished from reactive follicular hyperplasia by disruption of normal architecture, lack of macrophages, BCL2 expression, and monoclonality</li></ul>
+</li><li>Adults</li><li>t(14;<strong>18</strong>) =&gt; <strong>BCL2 overexpression</strong> =&gt; <strong>inhibition of apoptosis</strong> =&gt; proliferation</li><li>Can progress to diffuse large B-cell type</li><li>Treat with chemotherapy + <strong>rituximab</strong> (anti-CD20 Ab)</li></ul>
+<h3 id="mantle-cell-lymphoma">Mantle Cell Lymphoma</h3>
+<ul>
+<li>Proliferation of small CD20+ B cells in lymph node mantle</li><li>Older males</li><li>t(<strong>11</strong>;14) =&gt; <strong>cyclin D1</strong> overexpression =&gt; <strong>G1/S transition</strong> facilitated</li></ul>
+<h3 id="marginal-zone-lymphoma">Marginal Zone Lymphoma</h3>
+<ul>
+<li>Proliferation of small CD20+ B cells in marginal zone of lymph node</li><li>Associated with <strong>autoimmune disorders: Sjogren syndrome, Hashimoto's thyroiditis</strong></li><li>Gastric <strong>MALT lymphoma</strong> is a marginal zone lymphoma in gastric MALT<ul>
+<li>Often caused by <strong>H. pylori</strong>, and <strong>may regress with treatment of H. pylori</strong></li></ul>
+</li></ul>
+<h3 id="burkitt-lymphoma">Burkitt Lymphoma</h3>
+<ul>
+<li>Proliferation of intermediate CD20+ B cells associated with EBV</li><li><strong>Children or young adults with jaw or abdomen mass</strong></li><li>t(8;14) =&gt; c-myc overexpression (oncogene)</li><li>High mitotic index (very <strong>aggressive</strong>), <strong>starry sky</strong> appearance on biopsy</li></ul>
+<h3 id="diffuse-large-b-cell-lymphoma">Diffuse Large B Cell Lymphoma</h3>
+<ul>
+<li>Proliferation of large CD20+ B cells that grow in sheets</li><li><strong>Most common form in adults</strong></li><li><strong>High-grade</strong>, clinically aggressive</li></ul>
+<h2 id="clinical-picture-of-non-hodgkin-lymphoma">Clinical Picture of Non-Hodgkin Lymphoma</h2>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Typical Presentation</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Low</strong></td>
+<td><strong>Elderly patient</strong> with <strong>slow growing nodes</strong> that may wax and wane, <strong>no B symptoms</strong></td>
+<td>Varies from watchful waiting to chemo-immunotherapy; early stage may be cured with radiation</td>
+</tr>
+<tr>
+<td><strong>Intermediate</strong></td>
+<td><strong>Adults</strong> with nodes <strong>enlarging at worrying rate</strong>, +/- B symptoms</td>
+<td><strong>Stage I or II: R-CHOPx4</strong> and local <strong>radiation</strong>; <strong>Stage III or IV: R-CHOPx6</strong></td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td><strong>Young adult or child</strong> with <strong>rapidly enlarging</strong> nodes, <strong>acutely ill</strong> with B symptoms, and <strong>high LDH</strong> due to high cell turnover</td>
+<td>Hyper-CVAD for Burkitts; Patients are hospitalized for treatment, often require transfusions, and have high chance of fever from neutropenia. CNS prophylaxis also given</td>
+</tr>
+</tbody>
+</table>
+<p>Note: R-CHOP = rituximab, cyclophosphamide, Hydroxy-D (adriamycin), oncovin (vincristine), prednisone</p>
+</div></div>
+  <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 37) window.location.href = 'Leukemias.html';
+}</script>
+</body>
+</html>

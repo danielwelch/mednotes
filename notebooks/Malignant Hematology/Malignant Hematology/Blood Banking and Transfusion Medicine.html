@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre {margin: 0;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+  <div id="nav"><div>Next: <a href='Leukemias.html'>Leukemias</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>Blood Banking and Transfusion Medicine</h2>
+  </div>
+  <div id="contentarea"><div class="cell markdown-cell"><h1 id="blood-products">Blood Products</h1>
+</div><div class="cell text-cell"><img src="resources/1DE27DCDD4922EB33F234FAA7F23690F.png" alt="Screen Shot 2016-02-16 at 2.53.24 PM.png"></div><div class="cell markdown-cell"><table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Supplied as</th>
+<th>Treatment Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RBCs</td>
+<td>Packed RBC units</td>
+<td><strong>Increase oxygen carrying capacity</strong></td>
+</tr>
+<tr>
+<td>Platelets</td>
+<td>Platelet packs (collected via apheresis)</td>
+<td>Control or prevent <strong>bleeding due to platelet dysfunction or thrombocytopenia</strong></td>
+</tr>
+<tr>
+<td>Plasma and Plasma Derivatives</td>
+<td>Fresh frozen plasma (coag factors), cryo-precipitate (fibrinogen)</td>
+<td>Treat <strong>coagulation factor deficiency</strong>, low fibrinogen (DIC)</td>
+</tr>
+<tr>
+<td>Granulocytes</td>
+<td>Collected with apheresis</td>
+<td>Treat infection with neutropenia (rarely used)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Note: Whole blood transfusion rarely - instead use packed RBCs + plasma</li></ul>
+<hr>
+<h1 id="options-when-ordering-blood">Options When Ordering Blood</h1>
+<table>
+<thead>
+<tr>
+<th>Variation</th>
+<th>Uses</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMV Ab Negative Blood</td>
+<td>Prevent transmission of CMV to an immunosuppressed patient</td>
+<td>In reality, CMV status is usually not tested/unknown, so in packed RBC transmission, all products are leukoreduced to eliminate WBCs</td>
+</tr>
+<tr>
+<td>Leukoreduced Blood</td>
+<td>Leukocytes filtered out prior to storage to <strong>eliminate risks of CMV, EBV</strong>, Human T cell Leukemia/lymphoma virus</td>
+<td>CMV exists within WBCs, so removing WBCs reduces CMV risk; Also <strong>reduces risk of acute febrile nonhemolytic tranfusion reaction</strong> (host Ab vs. transfusion WBCs), <strong>less HLA alloimmuniazation</strong> (host making Abs to transfusion HLA molecules)</td>
+</tr>
+<tr>
+<td>Washed RBCs</td>
+<td>Decreased risk of <strong>acute non-febrile, non-hemolytic urticarial transfusion reaction</strong> or other anaphylactic reaction; <strong>Reduced K+ burden</strong> for renal insufficient patients; Less IgA for IgA deficient recipients; Less transfused donor Ab</td>
+<td>Can cause TRALI</td>
+</tr>
+<tr>
+<td>Irradiated RBC or Platelets</td>
+<td><strong>Reduce risk of Graft vs. Host Disease</strong> if recepient is immunocompromised</td>
+<td>Use in neonates, Intrauterine cases, leukemia/lymphomas, or if donor is close relative</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="abo-blood-group-antigens">ABO Blood Group Antigens</h1>
+<p>ABO antigens are <strong>glycoproteins</strong> and are not only expressed on RBCs.</p>
+</div><div class="cell text-cell"><img src="resources/5811A477D06C00FA3B665CBD397B445C.png" alt="Screen Shot 2016-02-16 at 7.20.52 PM.png"></div><div class="cell markdown-cell"><ul>
+<li><strong>L-fucosyl transferase activity</strong> is determined by <strong>H allele</strong>, and adds on H antigen<ul>
+<li>hh =&gt; no L-fucosyl transferase activity =&gt; no H antigen =&gt; <strong>Oh phenotype (Bombay)</strong></li></ul>
+</li><li><strong>N-acetyl galactosamine transferase</strong> =&gt; A antigen</li><li><strong>D-galactosyl transferase</strong> =&gt; B antigen</li><li><strong>Isohemagglutinins</strong> - Autoantibodies to ABO antigens develop in response to environmental CH2Os<ul>
+<li>Elicit <strong>IgM</strong> antibodies without previous exposure</li><li>Detectable after four months old</li></ul>
+</li></ul>
+</div><div class="cell markdown-cell"><hr>
+<h1 id="rh-blood-group-antigens">Rh Blood Group Antigens</h1>
+<p>Rh antigens are <strong>protein</strong> antigens and are <strong>expressed only on RBCs</strong></p>
+<ul>
+<li>There are 5 possible common antigenic products: C, c, D, E, e</li><li><strong>D</strong> is most important<ul>
+<li>Rh D protein is highly immunogenic, transmembrane protein</li><li>Rh positive D = Rh D is present; Rh negative d = Rh D is not present</li><li><strong>Rh D negative is uncommon</strong>, and very rare in Native Americans and Asians</li></ul>
+</li><li>RHCE gene controls expression of the CcEe transmembrane protein<ul>
+<li>C and c are co-dominant, and E and e are co-dominant</li><li>These are all expressed on the same transmembrane protein!</li><li>These are not typically tested for</li></ul>
+</li></ul>
+</div><div class="cell text-cell"><img src="resources/C36794BAADF674F29C61DA801DDB9DA4.png" alt="Screen Shot 2016-02-16 at 7.40.57 PM.png"></div><div class="cell markdown-cell"><hr>
+<h1 id="blood-typing">Blood Typing</h1>
+<p>ABO blood typing is performed via observing agglutination reactions.</p>
+<ul>
+<li>Forward typing: determining which ABO antigens are expressed on RBCs by ading anti-A and anti-B serum. agglutination =&gt; positive</li><li>Back typing:  determining the isohemagglutinins present in patients serum by treating test RBCs with patient's serum</li></ul>
+<p>Rh D typing is performed via an indirect agglutination test:</p>
+<ol>
+<li>IgG against Rh D added. If Rh D is present, IgG will coat RBCs</li><li>Anti-human globulin is added</li><li>If cells were coated with IgG, they will be cross-linked by anti-human globulin and agglutination will occur</li></ol>
+<p>Blood products are screened for HIV, Hepatitis B and C, HTLV 1 and 2, West Nile Virus, Chagas Disease, and Syphilis</p>
+<p>Crossmatch - the final step before transfusion, in which the donor's RBCs are mixed with recipient's plasma to observe for agglutination or hemolysis</p>
+<ul>
+<li>If positive, must crossmatch a different unit of blood</li></ul>
+<hr>
+<h1 id="risks-of-transfusion">Risks of Transfusion</h1>
+<h3 id="iron-overload">Iron overload</h3>
+<p>Can occur with multiple transfusions</p>
+<h2 id="alloimmunization">Alloimmunization</h2>
+<h4 id="alloimmunization-to-rh-d">Alloimmunization to Rh D</h4>
+<ul>
+<li>If recipient is Rh D -, <strong>first exposure to Rh D from transfusion or pregnancy with Rh D+ fetus leads to sensitization</strong> </li><li>Second exposure =&gt; Rh D antibodies produced =&gt; <strong>acute hemolytic transfusion reaction</strong> (if transfused) or <strong>hemolytic disease of the newborn</strong><ul>
+<li>Hemolysis in fetus causes fetal anemia =&gt; extramedullary hematopoiesis and CHF in utero =&gt; <strong>hydrops fetalis</strong></li><li>Hemolytic disease of the newborn is prevented by giving Rhogam</li></ul>
+</li></ul>
+<h4 id="alloimmunization-to-hla">Alloimmunization to HLA</h4>
+<p>Repeated platelet transfusions can cause platelet refractorines, sometimes due to anti-HLA antibodies in the patient's blood</p>
+<ul>
+<li>Treatment: use only HLA-compatible platelets</li><li>Can cause problems for future organ transplants</li></ul>
+<h2 id="transfusion-reactions">Transfusion Reactions</h2>
+<h3 id="hemolytic-transfusion-reactions">Hemolytic Transfusion Reactions</h3>
+<p>Anti-RBC antibody reaction to transfused RBCs leading to hemolysis of transfused blood</p>
+<ul>
+<li>Acute - within 24 hours<ul>
+<li>Causes: <strong>ABO or Rh D incompatibility</strong><ul>
+<li><strong>IgG</strong> against RBC antigen =&gt; <strong>Intravascular hemolysis with strong complement activation</strong> or <strong>extravascular hemolysis with weaker complement fixation</strong></li><li><strong>IgM</strong> against RBC antigen =&gt; <strong>Intravascular hemolysis with complement activation</strong> only</li></ul>
+</li><li>Findings:<ul>
+<li>Fever, chills, nausea/vomiting, SOB</li><li>Chest pain, flank pain, tachycardia, hypotension, oliguria</li><li>Burning sensation at infusion site</li><li>Shock, DIC, death</li><li>Lab findings of hemolysis + renal failure: <strong>declining Hct, decreased haptoglobin, increased LDH</strong>, hematuria, decreased urine output, increased Cr and BUN</li></ul>
+</li></ul>
+</li><li>Delayed - after 24 hours<ul>
+<li>Causes:<strong> low titer of antibodies to non-ABO antigens</strong></li><li>Extravascular more comman than intravascular</li><li>Findings:<ul>
+<li><strong>DAT+</strong></li><li><strong>Anemia</strong> (potentially severe) <strong>7-10 days after transfusion</strong></li></ul>
+</li><li>Treatment: <strong>Glucocorticoids</strong>, IVIG, EPO</li></ul>
+</li><li>Direct and Indirect Coombs Test (DAT and IAT)<ul>
+<li><strong>Direct</strong>: looking for IgG or C3 <strong>on patients RBCs</strong> directly</li><li><strong>Indirect</strong>: looking for IgG <strong>in the patient's serum</strong> by treating test RBCs and anti-human IgG with the patient's serum</li></ul>
+</li></ul>
+<h3 id="acute-febrile-non-hemolytic-transfusion-reactions">Acute Febrile Non-Hemolytic Transfusion Reactions</h3>
+<p><strong>Donor plasma contains cytokines</strong> (most common) or the recipient has IgG or IgM against donor WBCs or Platelets, leading to fever.</p>
+<ul>
+<li><strong> Chills and fever within 1-6 hours</strong> of transfusion</li><li><strong>DAT-</strong></li><li>Can be prevented by using leuko-reduced RBCs</li><li><strong>Most common transfusion reaction</strong></li></ul>
+<h3 id="acute-urticarial-transfusion-reactions">Acute Urticarial Transfusion Reactions</h3>
+<p>Recipient has <strong>IgE against some donor protein</strong>, leading to allergic symptoms</p>
+<ul>
+<li>Urticaria, itching, bronchospasm and anaphylaxis (more serious, can cause death)</li><li><strong>DAT-</strong></li><li>Treat with <strong>anti-histamines and glucocorticoids</strong> during reaction and preventatively in the future</li></ul>
+<hr>
+<h1 id="donor-attack-on-recipient">Donor Attack On Recipient</h1>
+<ul>
+<li>Anti-RBC antibody in donor plasma =&gt; hemolysis of recipient blood<ul>
+<li>Not usually a problem because packed RBCs have little plasma volume, washed packed RBCs have almost no plasma volume, and plasma transfusions are checked for compatability</li></ul>
+</li><li><strong>TRALI - Transfusion-related acute lung injury</strong> (most common cause of fatality from transfusion)<ul>
+<li>Donor <strong>plasma antibody against recipient WBC</strong> =&gt; WBC <strong>margination and activation in lung</strong> =&gt; lung injury and <strong>respiratory distress</strong></li><li>Alternatively, plasma contains cytokines that activate recipient WBC</li><li>Findings:<ul>
+<li>Acute respiratory insufficiency +/- pulmonary edema, fever, chills, hypotension</li><li><strong>DAT-</strong></li><li>Fast onset: either during transfusion or within 1-6 hours</li><li>Resolves spontaneously in 1-2 days with supportive treatment</li></ul>
+</li><li><strong>Risk is reduced if plasma is from males</strong> (less frequently HLA sensitized)</li></ul>
+</li><li>Transfusion Associated Graft vs. Host Disease</li></ul>
+<hr>
+<h1 id="massive-transfusion-risks">Massive Transfusion Risks</h1>
+</div><div class="cell markdown-cell"></div></div>
+  <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 39) window.location.href = 'Leukemias.html';
+}</script>
+</body>
+</html>
