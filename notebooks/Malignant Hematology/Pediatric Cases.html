@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: Arial, Helvetica, sans-serif;margin: 0;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 85%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre {margin: 0;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+  <!-- ace-static.css -->
+  <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+  <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+  <!-- export.css -->
+  <style>
+    body{margin:0 auto;max-width:800px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+</head>
+<body>
+  <div id="nav"><div>Next: <a href='Pregnancy Cases.html'>Pregnancy Cases</a>, Previous: <a href='Plasma Cell Dyscrasias.html'>Plasma Cell Dyscrasias</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>Pediatric Cases</h2>
+  </div>
+  <div id="contentarea"><div class="cell markdown-cell"><h1 id="normal-hematopoietic-ranges">Normal Hematopoietic Ranges</h1>
+</div><div class="cell text-cell"><img src="resources/EDBDE3AE3A7C8D7099578BD65DC4717D.png" alt="Screen Shot 2016-02-23 at 2.52.18 PM.png"></div><div class="cell markdown-cell"><h1 id="anemia-in-children">Anemia In Children</h1>
+<p>Children are often asymptomatic until Hgb falls below 7</p>
+<h3 id="diamond-blackfan-anemia">Diamond-Blackfan Anemia</h3>
+<p>A Pure Red Cell Aplasia caused by <strong>ribosomal protein mutations</strong> that cause <strong>apoptosis</strong> in red cell precursors</p>
+<p>Clinical Features:</p>
+<ul>
+<li>History of <strong>drug or toxin exposure</strong> during pregnancy</li><li>Low birthweight</li><li>Facial abnormalities</li><li>Upper limb abnormalities</li></ul>
+<p>Lab Findings:</p>
+<ul>
+<li><strong>Macrocytic anemia at birth</strong></li><li><strong>Increased fetal Hb</strong> and i antigen<ul>
+<li><strong>Kleihauer Bettke test</strong> shows <strong>increased RBCs in peripheral blood with Hb F</strong></li></ul>
+</li><li>Erythroid hypoplasia on Bone marrow</li></ul>
+<p>Therapy and Outcomes:</p>
+<ul>
+<li><strong>Prednisone</strong> - originally 3-4 times per day, then tapered until single daily dose that maintains Hb<ul>
+<li>Eventually, given every other day</li><li>60% develop steroid dependence, and 30-40% don't respond to therapy</li></ul>
+</li><li>Transfusion, Prolactin during pregnancy, BM transplant</li></ul>
+</div><div class="cell markdown-cell"><hr>
+<h1 id="neutropenia-in-children">Neutropenia In Children</h1>
+<h3 id="schwachman-diamond-syndrome">Schwachman-Diamond Syndrome</h3>
+<p>A syndrome characterized by exocrine pancreatic insuffiency, neutropenia, bony abnormalities</p>
+<ul>
+<li>Caused by SBDS mutation (7q11) that encodes a ribosomal protein</li><li>Can lead to <strong>increased infections, aplastic anemia at a young age, and AML</strong></li></ul>
+<p>Clinical Features:</p>
+<ul>
+<li>Short stature, malnourished, and Skin rash</li></ul>
+<p>Treatment:</p>
+<ul>
+<li><strong>Oral pancreatic enzymes</strong> for pancreatic insuffiency (improves w/ age)</li><li>G-CSF not used, may promote transformation to AML</li></ul>
+</div><div class="cell markdown-cell"><hr>
+<h1 id="thrombocytopenia-in-children">Thrombocytopenia In Children</h1>
+<h3 id="tar-syndrome">TAR Syndrome</h3>
+<p>Autosomal Recessive disease causing very low thrombocytopenia that improves with time</p>
+<ul>
+<li>Short stature and almost no forearm</li><li>GI/GU/Heart problems</li><li>Learning difficulties</li><li>Thumbs are present and normal (in contrast to Fanconi's)</li></ul>
+<h3 id="radioulnar-synostosis">Radioulnar Synostosis</h3>
+<p>Amegakaryocytic thrombocytopenia at brith</p>
+<ul>
+<li><strong>Fusion of the radius and ulna</strong></li></ul>
+</div><div class="cell markdown-cell"><hr>
+<h1 id="pancytopenia-in-children">Pancytopenia In Children</h1>
+<h3 id="fanconi-s-anemia">Fanconi's Anemia</h3>
+<p><strong>Pancytopenia</strong> associated with <strong>VACTERL</strong> syndrome</p>
+<ul>
+<li>Classic Fanconi's: <strong>Short stature, thumb abnormalities, cafe au lait spots</strong>, characteristic facial features<ul>
+<li>But 25% do not have physical anomalies</li></ul>
+</li><li><strong>Diagnosed via chromosomal fragility testing</strong></li><li>Genes involved in Fanconi's Anemia code for proteins that ubiquinate Fanc-D, which helps BRCA1 repair damaged DNA<ul>
+<li>Mutations cause increased risk of <strong>aplastic anemia, myelodysplasia, AML, liver tumors and other solid tumors</strong></li></ul>
+</li><li>Treatment: BM transplant</li></ul>
+</div></div>
+  <script>document.body.onkeyup = function(e) {
+if (e.keyCode === 39) window.location.href = 'Pregnancy Cases.html';
+if (e.keyCode === 37) window.location.href = 'Plasma Cell Dyscrasias.html';
+}</script>
+</body>
+</html>
